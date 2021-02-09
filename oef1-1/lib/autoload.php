@@ -15,6 +15,9 @@ require_once "security.php";
 require_once "routing.php";
 require_once "strings.php";
 
+//models
+require_once $_SERVER['DOCUMENT_ROOT'] . $app_root . "/models/city.php";
+
 require_once "access_control.php";
 
 //initialize $errors array

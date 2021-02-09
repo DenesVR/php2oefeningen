@@ -8,16 +8,7 @@ class City
     private $img_title;
     private $img_width;
     private $img_height;
-
-    public function __construct($img_id, $img_filename, $img_title, $img_width, $img_height)
-    {
-        $this->img_id = $img_id;
-        $this->img_filename = $img_filename;
-        $this->img_title = $img_title;
-        $this->img_width = $img_width;
-        $this->img_height = $img_height;
-    }
-
+    private $lan_id;
 
     public function getImgId()
     {
@@ -69,6 +60,39 @@ class City
         $this->img_height = $img_height;
     }
 
+    public function getLanId()
+    {
+        return $this->lan_id;
+    }
 
+    public function setLanId($lan_id): void
+    {
+        $this->lan_id = $lan_id;
+    }
+
+    public function toArray(): array
+    {
+        return [
+            "id" => $this->getId(),
+            "filename" => $this->getFilename(),
+            "title" => $this->getTitle(),
+            "width" => $this->getWidth(),
+            "height" => $this->getHeight(),
+            "published" => $this->getPublished(),
+            "lan_id" => $this->getLanId(),
+            "date" => $this->getDate()
+        ];
+    }
+
+    public function toArray2(): array
+    {
+        $retarr = [];
+
+        foreach( $this as $key => $value )
+        {
+            $retarr[$key] = $value;
+        }
+        return $retarr;
+    }
 
 }
