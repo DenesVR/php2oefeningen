@@ -21,7 +21,8 @@ function PrintNavbar( )
 
     if ( isset($_SESSION['user']))
     {
-        $username = $_SESSION['user']['usr_voornaam'] . " " . $_SESSION['user']['usr_naam'];
+        //$_SESSION['user'] = new User();
+        $username = $_SESSION['user']->getUsrVoornaam() . " " . $_SESSION['user']->getUsrNaam();
     }
     else
     {
