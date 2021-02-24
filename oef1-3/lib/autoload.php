@@ -17,11 +17,15 @@ require_once "strings.php";
 //models
 require_once $_SERVER['DOCUMENT_ROOT'] . $app_root . "/models/City.php";
 require_once $_SERVER['DOCUMENT_ROOT'] . $app_root . "/models/User.php";
+require_once $_SERVER['DOCUMENT_ROOT'] . $app_root . "/services/MessageService.php";
 
 session_start();
 
 require_once "access_control.php";
 
+$ms = new MessageService();
+
+/*
 //initialize $errors array
 $errors = [];
 
@@ -39,7 +43,7 @@ if ( key_exists( 'msgs', $_SESSION ) AND is_array( $_SESSION['msgs']) )
     $msgs = $_SESSION['msgs'];
     $_SESSION['msgs'] = [];
 }
-
+*/
 //initialize $old_post
 $old_post = [];
 
