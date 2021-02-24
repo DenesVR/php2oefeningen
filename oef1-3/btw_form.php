@@ -5,6 +5,8 @@ ini_set( 'display_errors', 1 );
 $public_access = false;
 require_once "lib/autoload.php";
 
+global $ms;
+
 PrintHead();
 PrintJumbo( $title = "Detail EU BTW Code", $subtitle = "" );
 PrintNavbar();
@@ -26,7 +28,7 @@ PrintNavbar();
             //merge
             $output = MergeViewWithData( $output, $data );
             $output = MergeViewWithExtraElements( $output, $extra_elements );
-            $output = MergeViewWithErrors( $output, $errors );
+            $output = MergeViewWithErrors( $output, $ms->ShowErrors() );
             $output = RemoveEmptyErrorTags( $output, $data );
 
             print $output;

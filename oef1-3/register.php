@@ -5,6 +5,8 @@ ini_set( 'display_errors', 1 );
 $public_access = true;
 require_once "lib/autoload.php";
 
+global $ms;
+
 PrintHead();
 PrintJumbo( $title = "Registreer", $subtitle = "" );
 ?>
@@ -35,7 +37,7 @@ PrintJumbo( $title = "Registreer", $subtitle = "" );
             //merge
             $output = MergeViewWithData( $output, $data );
             $output = MergeViewWithExtraElements( $output, $extra_elements );
-            $output = MergeViewWithErrors( $output, $errors );
+            $output = MergeViewWithErrors( $output, $ms->ShowErrors() );
             $output = RemoveEmptyErrorTags( $output, $data );
 
             print $output;
