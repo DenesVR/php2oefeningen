@@ -22,7 +22,7 @@ PrintNavbar();
     }
 
     //get data
-    $data = GetData( "select * from eu_btw_codes" );
+    $data = $dbm->GetData( "select * from eu_btw_codes" );
 
     $output ="";
     $output .= "<a class='btn btn-info' role='button' href='lib/export_btw.php'>Export CSV</a>";

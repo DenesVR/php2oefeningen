@@ -5,7 +5,6 @@ $request_uri = explode("/", $_SERVER['REQUEST_URI']);
 $app_root = "/" . $request_uri[1] . "/" . $request_uri[2];
 
 require_once "connection_data.php";
-require_once "pdo.php";
 require_once "html_functions.php";
 require_once "form_elements.php";
 require_once "sanitize.php";
@@ -18,12 +17,14 @@ require_once "strings.php";
 require_once $_SERVER['DOCUMENT_ROOT'] . $app_root . "/models/City.php";
 require_once $_SERVER['DOCUMENT_ROOT'] . $app_root . "/models/User.php";
 require_once $_SERVER['DOCUMENT_ROOT'] . $app_root . "/services/MessageService.php";
+require_once $_SERVER['DOCUMENT_ROOT'] . $app_root . "/services/DBManager.php";
 
 session_start();
 
 require_once "access_control.php";
 
 $ms = new MessageService();
+$dbm = new DBManager();
 
 /*
 //initialize $errors array

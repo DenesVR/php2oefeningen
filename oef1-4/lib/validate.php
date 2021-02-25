@@ -3,7 +3,9 @@ require_once "autoload.php";
 
 function CompareWithDatabase( $table, $pkey ): void
 {
-    $data = GetData( "SHOW FULL COLUMNS FROM $table" );
+    global $dbm;
+
+    $data = $dbm->GetData( "SHOW FULL COLUMNS FROM $table" );
 
     //overloop alle in de databank gedefinieerde velden van de tabel
     foreach ( $data as $row )

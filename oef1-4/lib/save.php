@@ -9,7 +9,7 @@ SaveFormData();
 
 function SaveFormData()
 {
-
+    global $dbm;
     global $app_root;
 
     if ( $_SERVER['REQUEST_METHOD'] == "POST" )
@@ -109,7 +109,7 @@ function SaveFormData()
         $sql .= $where;
 
         //run SQL
-        $result = ExecuteSQL( $sql );
+        $result = $dbm->ExecuteSQL( $sql );
 
         //output if not redirected
         print $sql ;

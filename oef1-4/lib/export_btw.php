@@ -2,7 +2,7 @@
 require_once "autoload.php";
 require_once "csv_export_functions.php";
 
-$data = GetData( "select * from eu_btw_codes" );
+$data = $dbm->GetData( "select * from eu_btw_codes" );
 
 PrintCSVHeader("eu_btw_codes");
 print "Land;BTW Code;Hyperlink;\r\n";

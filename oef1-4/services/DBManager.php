@@ -24,7 +24,7 @@ class DBManager
     {
         global $conn;
 
-        CreateConnection();
+        $this->CreateConnection();
 
         //define and execute query
         $result = $conn->query( $sql );

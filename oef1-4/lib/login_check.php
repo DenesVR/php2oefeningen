@@ -21,6 +21,9 @@ else
 
 function LoginCheck()
 {
+
+    global $dbm;
+
     if ( $_SERVER['REQUEST_METHOD'] == "POST" )
     {
         //controle CSRF token
@@ -61,7 +64,7 @@ function LoginCheck()
         $ww = $_POST['usr_password'];
 
         $sql = "SELECT * FROM user WHERE usr_email='$email' ";
-        $data = GetData($sql);
+        $data = $dbm->GetData($sql);
 
         if ( count($data) > 0 )
         {

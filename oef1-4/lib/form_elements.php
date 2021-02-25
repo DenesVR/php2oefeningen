@@ -3,10 +3,13 @@ require_once "autoload.php";
 
 function MakeSelect( $fkey, $value, $sql )
 {
+
+    global $dbm;
+
     $select = "<select id=$fkey name=$fkey value=$value>";
     $select .= "<option value='0'></option>";
 
-    $data = GetData($sql);
+    $data = $dbm->GetData($sql);
 
     foreach ( $data as $row )
     {
