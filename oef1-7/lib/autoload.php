@@ -14,6 +14,10 @@ require_once "strings.php";
 //models
 require_once $_SERVER['DOCUMENT_ROOT'] . $app_root . "/models/City.php";
 require_once $_SERVER['DOCUMENT_ROOT'] . $app_root . "/models/User.php";
+require_once $_SERVER['DOCUMENT_ROOT'] . $app_root . "/models/Monuments.php";
+require_once $_SERVER['DOCUMENT_ROOT'] . $app_root . "/models/Eifeltoren.php";
+require_once $_SERVER['DOCUMENT_ROOT'] . $app_root . "/models/Holocaustmonument.php";
+require_once $_SERVER['DOCUMENT_ROOT'] . $app_root . "/models/BigBen.php";
 
 //services
 require_once $_SERVER['DOCUMENT_ROOT'] . $app_root . "/services/MessageService.php";

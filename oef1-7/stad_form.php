@@ -36,6 +36,24 @@ PrintJumbo( $title = "Bewerk afbeelding", $subtitle = "" );
             $output = RemoveEmptyErrorTags( $output, $data );
 
             print $output;
+
+            if($_GET['img_id'] == 1) {
+                $holoc = new Holocaustmonument();
+                $holoc->momumentsName();
+                echo '<br>';
+                $holoc->monumentsInfo();
+
+            } elseif($_GET['img_id'] == 2) {
+                $eif = new Eifeltoren();
+                $eif->momumentsName();
+                echo '<br>';
+                $eif->monumentsInfo();
+            } elseif ($_GET['img_id'] == 3) {
+                $bigb = new BigBen();
+                $bigb->momumentsName();
+                echo '<br>';
+                $bigb->monumentsInfo();
+            }
         ?>
 
     </div>
