@@ -289,3 +289,7 @@
 2021-03-11 18:14:17: SELECT MAX(eub_id) FROM eu_btw_codes
 2021-03-11 18:16:47: INSERT INTO eu_btw_codes SET eub_land='Amerika', eub_code='USA'
 2021-03-11 18:16:47: SELECT MAX(eub_id) FROM eu_btw_codes
+2021-03-11 18:34:37: INSERT INTO eu_btw_codes SET eub_land='Amerika', eub_code='USA'
+2021-03-11 18:34:37: SELECT MAX(eub_id) FROM eu_btw_codes
+2021-03-11 18:35:41: INSERT INTO eu_btw_codes SET eub_land='woenstijn', eub_code='WOE'
+2021-03-11 18:35:41: SELECT MAX(eub_id) FROM eu_btw_codes
