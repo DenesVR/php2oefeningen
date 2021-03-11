@@ -1,4 +1,5 @@
 <?php
+$public_access =  true;
 require_once "../lib/autoload.php";
 header("Access-Control-Allow-Origin: 'https://gf.dev'");
 
