@@ -40,6 +40,7 @@ PrintNavbar();
         $row['img_weather_description'] = $response->weather[0]->description;
         $row['img_weather_temp'] = round($response->main->temp);
         $row['img_weather_humidity'] = $response->main->humidity;
+        $row['weather_icon'] = $response->weather[0]->icon;
 
         $data[$key] = $row;
     }
