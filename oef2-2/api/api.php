@@ -52,7 +52,7 @@ if ( $method == "POST" AND $request_part == "btwcodes"  )
     $data = $container->getDBManager()->ExecuteSQL( $sql );
 
     http_response_code(201);
-    print json_encode( [ "msg" =>"BTW code $code - $land aangemaakt" ] ) ;
+    print json_encode( [ "msg" =>"BTW code $code - $land aangemaakt", "id" => $container->getDBManager()->GetData( "SELECT MAX(eub_id) FROM eu_btw_codes", 'assoc' ) ] ) ;
     //eub_id nog toevoegen in json_encode
 }
 
