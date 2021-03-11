@@ -261,3 +261,17 @@
 2021-03-11 17:19:13: select eub_id from eu_btw_codes where eub_code=BRAZ
 2021-03-11 17:19:39: INSERT INTO eu_btw_codes SET eub_code='BRAZ', eub_land='Brazilie'
 2021-03-11 17:27:35: INSERT INTO eu_btw_codes SET eub_code='BRAZ', eub_land='Brazilie'
+2021-03-11 17:42:53: select * from eu_btw_codes
+2021-03-11 17:46:04: DELETE FROM eu_btw_codes where eub_id=51
+2021-03-11 17:48:01: UPDATE eu_btw_codes SET eub_code='C' WHERE eub_id=50
+2021-03-11 17:49:57: UPDATE eu_btw_codes SET eub_code='C' WHERE eub_id=50
+2021-03-11 17:49:57: UPDATE eu_btw_codes SET eub_code='C' WHERE eub_id=50
+2021-03-11 17:50:17: UPDATE eu_btw_codes SET eub_code='C' WHERE eub_id=50
+2021-03-11 17:51:12: UPDATE eu_btw_codes SET eub_code='C' WHERE eub_id=50
+2021-03-11 17:51:13: UPDATE eu_btw_codes SET eub_code='C' WHERE eub_id=50
+2021-03-11 17:51:32: UPDATE eu_btw_codes SET eub_code='CH' WHERE eub_id=50
+2021-03-11 17:54:25: UPDATE eu_btw_codes SET eub_code='CH', eub_land='China' WHERE eub_id=50
+2021-03-11 17:54:39: UPDATE eu_btw_codes SET eub_code='C', eub_land='china' WHERE eub_id=50
+2021-03-11 17:54:48: UPDATE eu_btw_codes SET eub_code='CH', eub_land='China' WHERE eub_id=50
+2021-03-11 17:55:09: DELETE FROM eu_btw_codes where eub_id=58
+2021-03-11 17:55:35: select * from eu_btw_codes

@@ -30,7 +30,7 @@ if ( $method == "GET" AND $request_part == "btwcodes" )
 {
     $sql = "select * from eu_btw_codes";
     $data = $container->getDBManager()->GetData( $sql, 'assoc');
-    // ... execute $sql
+
     print json_encode( [ "msg" => "OK", "data" => $data ] ) ;
 }
 
@@ -39,7 +39,7 @@ if ( $method == "GET" AND $request_part == "btwcode" )
 {
     $sql = "select * from eu_btw_codes where eub_id=$id";
     $data = $container->getDBManager()->GetData( $sql, 'assoc');
-    // ... execute $sql
+
     print json_encode( [ "msg" => "OK", "data" => $data ] ) ;
 }
 
@@ -48,9 +48,9 @@ if ( $method == "POST" AND $request_part == "btwcodes"  )
 {
     $code = $_POST["code"];
     $land = $_POST["land"];
-    $sql = "INSERT INTO eu_btw_codes SET eub_code='$code', eub_land='$land'";
+    $sql = "INSERT INTO eu_btw_codes SET eub_land='$land', eub_code='$code'";
     $data = $container->getDBManager()->ExecuteSQL( $sql );
-    // ... execute $sql
+
     http_response_code(201);
     print json_encode( [ "msg" =>"BTW code $code - $land aangemaakt" ] ) ;
     //eub_id nog toevoegen in json_encode
@@ -60,19 +60,22 @@ if ( $method == "POST" AND $request_part == "btwcodes"  )
 if ( $method == "PUT" AND $request_part == "btwcode" )
 {
     $contents = json_decode( file_get_contents("php://input") );
-    $newdata = $contents->code;
+    $newCode = $contents->code;
+    $newLand = $contents->land;
 
-    $sql = "UPDATE eu_btw_codes SET eub_code='$newdata' WHERE eub_id=$id";
-    // ... execute $sql
-    print json_encode( [ "msg" =>"OK", "info" =>"BTW code $newdata - $contents->land gewijzigd" ] ) ;
+    $sql = "UPDATE eu_btw_codes SET eub_code='$newCode', eub_land='$newLand' WHERE eub_id=$id";
+    $data = $container->getDBManager()->ExecuteSQL( $sql );
+
+    print json_encode( [ "msg" =>"OK", "info" =>"BTW code $newCode - $newLand gewijzigd" ] ) ;
 }
 
 //DELETE btwcode: een btwcode verwijderen
 if ( $method == "DELETE" AND $request_part == "btwcode" )
 {
-    $sql = "DELETE FROM eu_btw_codes WHERE eub_id=$id";
-    // ... execute $sql
-    print json_encode( [ "msg" => "$id" ] ) ;
+    $sql = "DELETE FROM eu_btw_codes where eub_id=$id";
+    $data = $container->getDBManager()->ExecuteSQL( $sql );
+
+    print json_encode( [ "msg" => "OK", "info" => "BTW code $id verwijderd" ] ) ;
 }
 
 ?>
