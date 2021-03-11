@@ -37,9 +37,9 @@ PrintNavbar();
         $restClient->CurlInit($url);
         $response = json_decode($restClient->CurlExec());
 
-        $row['weather_description'] = $response->weather[0]->description;
-        $row['weather_temp'] = round($response->main->temp);
-        $row['weather_humidity'] = $response->main->humidity;
+        $row['img_weather_description'] = $response->weather[0]->description;
+        $row['img_weather_temp'] = round($response->main->temp);
+        $row['img_weather_humidity'] = $response->main->humidity;
 
         $data[$key] = $row;
     }

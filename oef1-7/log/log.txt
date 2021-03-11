@@ -235,3 +235,35 @@
 2021-03-09 09:31:43: select * from images where img_id=1
 2021-03-09 09:31:43: select lan_id, lan_land from land
 2021-03-09 09:31:45: select * from images
+2021-03-09 10:03:27: select * from images where img_id=1
+2021-03-09 10:03:27: select lan_id, lan_land from land
+2021-03-09 10:03:29: select * from images
+2021-03-09 10:03:31: select * from images where img_id=2
+2021-03-09 10:03:31: select lan_id, lan_land from land
+2021-03-09 10:03:32: select * from images
+2021-03-09 10:03:52: select * from images
+2021-03-09 10:03:54: select * from images where img_id=1
+2021-03-09 10:03:54: select lan_id, lan_land from land
+2021-03-09 10:03:58: select * from images
+2021-03-09 10:03:59: select * from images where img_id=2
+2021-03-09 10:03:59: select lan_id, lan_land from land
+2021-03-09 10:04:01: select * from images
+2021-03-09 10:04:02: select * from images where img_id=3
+2021-03-09 10:04:02: select lan_id, lan_land from land
+2021-03-09 10:04:09: select * from images
+2021-03-09 10:04:10: select * from images where img_id=2
+2021-03-09 10:04:10: select lan_id, lan_land from land
+2021-03-09 10:04:17: select * from images
+2021-03-09 10:16:12: select * from images
+2021-03-09 10:16:37: select * from images where img_id=1
+2021-03-09 10:16:37: select lan_id, lan_land from land
+2021-03-09 10:16:45: select * from images
+2021-03-09 10:16:46: select * from images where img_id=2
+2021-03-09 10:16:46: select lan_id, lan_land from land
+2021-03-09 10:16:49: select * from images
+2021-03-09 10:16:50: select * from images where img_id=1
+2021-03-09 10:16:50: select lan_id, lan_land from land
+2021-03-09 10:16:54: select * from images
+2021-03-09 10:16:55: select * from images where img_id=3
+2021-03-09 10:16:55: select lan_id, lan_land from land
+2021-03-09 10:16:59: select * from images
