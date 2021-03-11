@@ -293,3 +293,29 @@
 2021-03-11 18:34:37: SELECT MAX(eub_id) FROM eu_btw_codes
 2021-03-11 18:35:41: INSERT INTO eu_btw_codes SET eub_land='woenstijn', eub_code='WOE'
 2021-03-11 18:35:41: SELECT MAX(eub_id) FROM eu_btw_codes
+2021-03-11 20:22:24: select * from eu_btw_codes
+2021-03-11 20:24:02: select * from eu_btw_codes
+2021-03-11 20:24:45: select * from eu_btw_codes
+2021-03-11 20:26:46: select * from eu_btw_codes
+2021-03-11 20:26:59: select * from eu_btw_codes where eub_id=4
+2021-03-11 20:27:29: select * from eu_btw_codes
+2021-03-11 20:27:42: select * from eu_btw_codes
+2021-03-11 20:36:38: select * from eu_btw_codes
+2021-03-11 20:37:11: select * from eu_btw_codes
+2021-03-11 20:38:00: select * from eu_btw_codes
+2021-03-11 20:38:03: select * from eu_btw_codes
+2021-03-11 20:38:04: select * from eu_btw_codes
+2021-03-11 20:38:16: select * from eu_btw_codes
+2021-03-11 20:38:18: select * from eu_btw_codes
+2021-03-11 20:38:19: select * from eu_btw_codes
+2021-03-11 20:38:50: select * from eu_btw_codes
+2021-03-11 20:38:54: select * from eu_btw_codes
+2021-03-11 20:38:55: select * from eu_btw_codes
+2021-03-11 20:38:56: select * from eu_btw_codes
+2021-03-11 20:39:17: select * from eu_btw_codes
+2021-03-11 20:39:17: select * from eu_btw_codes
+2021-03-11 20:39:47: select * from eu_btw_codes
+2021-03-11 20:39:52: select * from eu_btw_codes
+2021-03-11 20:40:12: select * from eu_btw_codes
+2021-03-11 20:40:53: select * from eu_btw_codes
+2021-03-11 20:41:08: select * from eu_btw_codes

@@ -44,7 +44,7 @@ if ( $method == "GET" AND $request_part == "btwcode" )
 }
 
 //POST btwcodes: een btwcode toevoegen
-if ( $method == "POST" AND $request_part == "btwcodes"  )
+if ( $method == "POST" AND $request_part == "btwcodes" )
 {
     $code = $_POST["code"];
     $land = $_POST["land"];
@@ -76,6 +76,12 @@ if ( $method == "DELETE" AND $request_part == "btwcode" )
     $data = $container->getDBManager()->ExecuteSQL( $sql );
 
     print json_encode( [ "msg" => "OK", "info" => "BTW code $id verwijderd" ] ) ;
+}
+
+//errors
+if ( $method == "GET" AND $request_part != "btwcodes")
+{
+    print json_encode( [ "msg" => "Deze combinatie van Resource en Method is niet toegelaten" ] ) ;
 }
 
 ?>
