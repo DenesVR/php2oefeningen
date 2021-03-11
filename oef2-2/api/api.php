@@ -1,11 +1,12 @@
 <?php
+error_reporting( E_ALL );
+ini_set( 'display_errors', 1 );
 $public_access =  true;
 require_once "../lib/autoload.php";
+
 header("Access-Control-Allow-Origin: 'https://gf.dev'");
 
-
 header("Access-Control-Allow-Credentials 'true'");
-
 
 //Allow GET, POST, PUT, DELETE, OPTIONS http methods
 header("Access-Control-Allow-Methods: GET, POST, PUT, DELETE, OPTIONS");
@@ -16,24 +17,13 @@ header("Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers
 //Set response content type and character set
 header("Content-Type: application/json; charset=UTF-8");
 
-
-
 $method = $_SERVER['REQUEST_METHOD'];
 $request_uri = $_SERVER['REQUEST_URI'];
 
 $parts = explode("/", $request_uri);
+$request_part = $parts[4];
 
-//zoek "rest" in de uri
-for ( $i=0; $i<count($parts) ;$i++)
-{
-    if ( $parts[$i] == "rest" )
-    {
-        break;
-    }
-}
-
-$request_part = $parts[$i+2];
-if ( count($parts) > $i + 3 ) $id = $parts[$i + 3];
+if ( count($parts) > 5 ) $id = $parts[5];
 
 //GET btwcodes: alle btwcodes geven
 if ( $method == "GET" AND $request_part == "btwcodes" )
