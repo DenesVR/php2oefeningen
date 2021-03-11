@@ -29,26 +29,31 @@ if ( count($parts) > 5 ) $id = $parts[5];
 if ( $method == "GET" AND $request_part == "btwcodes" )
 {
     $sql = "select * from eu_btw_codes";
+    $data = $container->getDBManager()->GetData( $sql, 'assoc');
     // ... execute $sql
-    print json_encode( [ "msg" => $sql ] ) ;
+    print json_encode( [ "msg" => "OK", "data" => $data ] ) ;
 }
 
 //GET btwcode: één btwcode geven
 if ( $method == "GET" AND $request_part == "btwcode" )
 {
     $sql = "select * from eu_btw_codes where eub_id=$id";
+    $data = $container->getDBManager()->GetData( $sql, 'assoc');
     // ... execute $sql
-    print json_encode( [ "msg" => $sql ] ) ;
+    print json_encode( [ "msg" => "OK", "data" => $data ] ) ;
 }
 
 //POST btwcodes: een btwcode toevoegen
 if ( $method == "POST" AND $request_part == "btwcodes"  )
 {
     $code = $_POST["code"];
-    $sql = "INSERT INTO eu_btw_codes SET eub_code='$code' ";
+    $land = $_POST["land"];
+    $sql = "INSERT INTO eu_btw_codes SET eub_code='$code', eub_land='$land'";
+    $data = $container->getDBManager()->ExecuteSQL( $sql );
     // ... execute $sql
     http_response_code(201);
-    print json_encode( [ "msg" => $sql ] ) ;
+    print json_encode( [ "msg" =>"BTW code $code - $land aangemaakt" ] ) ;
+    //eub_id nog toevoegen in json_encode
 }
 
 //PUT btwcode: een btwcode updaten
@@ -59,7 +64,7 @@ if ( $method == "PUT" AND $request_part == "btwcode" )
 
     $sql = "UPDATE eu_btw_codes SET eub_code='$newdata' WHERE eub_id=$id";
     // ... execute $sql
-    print json_encode( [ "msg" => $sql ] ) ;
+    print json_encode( [ "msg" =>"OK", "info" =>"BTW code $newdata - $contents->land gewijzigd" ] ) ;
 }
 
 //DELETE btwcode: een btwcode verwijderen
@@ -67,7 +72,7 @@ if ( $method == "DELETE" AND $request_part == "btwcode" )
 {
     $sql = "DELETE FROM eu_btw_codes WHERE eub_id=$id";
     // ... execute $sql
-    print json_encode( [ "msg" => $sql ] ) ;
+    print json_encode( [ "msg" => "$id" ] ) ;
 }
 
 ?>
