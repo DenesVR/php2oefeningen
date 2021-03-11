@@ -174,3 +174,5 @@
 2021-03-11 14:17:21: select * from images
 2021-03-11 14:18:35: SELECT * FROM user WHERE usr_email='denesvanroy@gmail.com' 
 2021-03-11 14:18:35: select * from images
+2021-03-11 14:43:21: SELECT * FROM user WHERE usr_email='denesvanroy@gmail.com' 
+2021-03-11 14:43:21: select * from images

@@ -1,4 +1,5 @@
 <?php
+require_once "../lib/autoload.php";
 header("Access-Control-Allow-Origin: 'https://gf.dev'");
 
 $method = $_SERVER['REQUEST_METHOD'];
@@ -18,7 +19,7 @@ for ( $i=0; $i<count($parts) ;$i++)
 $request_part = $parts[$i+2];
 if ( count($parts) > $i + 3 ) $id = $parts[$i + 3];
 
-//GET spelers: alle spelers geven
+//GET btwcodes: alle btwcodes geven
 if ( $method == "GET" AND $request_part == "btwcodes" )
 {
     $sql = "select * from eu_btw_codes";
@@ -26,39 +27,39 @@ if ( $method == "GET" AND $request_part == "btwcodes" )
     print json_encode( [ "msg" => $sql ] ) ; //normaal zou je hier alle spelers teruggeven
 }
 
-//GET speler: één speler geven
-if ( $method == "GET" AND $request_part == "speler" )
+//GET btwcode: één btwcode geven
+if ( $method == "GET" AND $request_part == "btwcode" )
 {
-    $sql = "select * from spelers where spe_id=$id";
+    $sql = "select * from eu_btw_codes where eub_id=$id";
     // ... execute $sql
     print json_encode( [ "msg" => $sql ] ) ; //normaal zou je hier één speler teruggeven
 }
 
-//POST spelers: een speler toevoegen
-if ( $method == "POST" AND $request_part == "spelers"  )
+//POST btwcodes: een btwcode toevoegen
+if ( $method == "POST" AND $request_part == "btwcodes"  )
 {
-    $naam = $_POST["naam"];
-    $sql = "INSERT INTO spelers SET spe_naam='$naam' ";
+    $code = $_POST["code"];
+    $sql = "INSERT INTO eu_btw_codes SET eub_code='$code' ";
     // ... execute $sql
     http_response_code(201);
     print json_encode( [ "msg" => $sql ] ) ; //normaal zou je hier een OK teruggeven
 }
 
-//PUT speler: een speler updaten
-if ( $method == "PUT" AND $request_part == "speler" )
+//PUT btwcode: een btwcode updaten
+if ( $method == "PUT" AND $request_part == "btwcode" )
 {
     $contents = json_decode( file_get_contents("php://input") );
-    $newdata = $contents->naam;
+    $newdata = $contents->code;
 
-    $sql = "UPDATE spelers SET spe_naam='$newdata' WHERE spe_id=$id";
+    $sql = "UPDATE eu_btw_codes SET eub_code='$newdata' WHERE eub_id=$id";
     // ... execute $sql
     print json_encode( [ "msg" => $sql ] ) ; //normaal zou je hier een OK teruggeven
 }
 
-//DELETE speler: een speler verwijderen
-if ( $method == "DELETE" AND $request_part == "speler" )
+//DELETE btwcode: een btwcode verwijderen
+if ( $method == "DELETE" AND $request_part == "btwcode" )
 {
-    $sql = "DELETE FROM spelers WHERE spe_id=$id";
+    $sql = "DELETE FROM eu_btw_codes WHERE eub_id=$id";
     // ... execute $sql
     print json_encode( [ "msg" => $sql ] ) ; //normaal zou je hier een OK teruggeven
 }
