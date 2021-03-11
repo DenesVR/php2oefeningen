@@ -24,7 +24,7 @@ require_once $_SERVER['DOCUMENT_ROOT'] . $app_root . "/services/DebugLogger.php"
 require_once $_SERVER['DOCUMENT_ROOT'] . $app_root . "/services/Validator.php";
 require_once $_SERVER['DOCUMENT_ROOT'] . $app_root . "/services/LoginChecker.php";
 require_once $_SERVER['DOCUMENT_ROOT'] . $app_root . "/services/Container.php";
-require_once $_SERVER['DOCUMENT_ROOT'] . $app_root . "/services/RESTclient.php";
+require_once $_SERVER['DOCUMENT_ROOT'] . $app_root . "/services/RESTClient.php";
 
 require_once $_SERVER['DOCUMENT_ROOT'] . $app_root . "/export/AbstractCSVExport.php";
 
