@@ -79,7 +79,7 @@ if ( $method == "DELETE" AND $request_part == "btwcode" )
 }
 
 //errors
-if ( $method == "GET" AND $request_part != "btwcodes")
+if ( $method == "GET" AND $request_part != "btwcodes" AND $request_part != "btwcode" )
 {
     print json_encode( [ "msg" => "Deze combinatie van Resource en Method is niet toegelaten" ] ) ;
 }

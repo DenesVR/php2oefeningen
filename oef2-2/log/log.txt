@@ -319,3 +319,9 @@
 2021-03-11 20:40:12: select * from eu_btw_codes
 2021-03-11 20:40:53: select * from eu_btw_codes
 2021-03-11 20:41:08: select * from eu_btw_codes
+2021-03-11 20:44:09: select * from eu_btw_codes
+2021-03-12 08:01:39: select * from eu_btw_codes where eub_id=4
+2021-03-12 08:02:15: select * from eu_btw_codes where eub_id=4
+2021-03-12 08:02:18: select * from eu_btw_codes where eub_id=4
+2021-03-12 08:02:33: select * from eu_btw_codes
+2021-03-12 08:02:47: select * from eu_btw_codes where eub_id=4
