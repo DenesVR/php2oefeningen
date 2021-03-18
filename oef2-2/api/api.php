@@ -17,6 +17,7 @@ header("Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers
 //Set response content type and character set
 header("Content-Type: application/json; charset=UTF-8");
 
+//Hardcoded authenticatie toegevoegd
 /* if ( $_SERVER['PHP_AUTH_USER'] !== "denes123" OR $_SERVER['PHP_AUTH_PW'] !== "dnsvr123" )
 {
     //als er geen juiste credentials doorgegeven worden, afbreken met code 401 Unauthorized
