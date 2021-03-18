@@ -4,7 +4,7 @@ ini_set( 'display_errors', 1 );
 $public_access =  true;
 require_once "../lib/autoload.php";
 
-header("Access-Control-Allow-Origin: 'https://gf.dev'");
+header("Access-Control-Allow-Origin: *");
 
 header("Access-Control-Allow-Credentials 'true'");
 
@@ -25,6 +25,23 @@ $request_part = $parts[4];
 
 if ( count($parts) > 5 ) $id = $parts[5];
 
+//errors
+if ( $method == "GET" AND $request_part != "btwcodes" AND $request_part != "btwcode" )
+{
+    print json_encode( [ "msg" => "Deze combinatie van Resource en Method is niet toegelaten" ] ) ;
+    exit;
+}
+
+if (!is_numeric($id) && $request_part == "btwcode") {
+    print json_encode(["msg" => 'Het opgegeven ID is ongeldig']);
+    exit;
+}
+
+if ($id && $request_part == "btwcodes") {
+    print json_encode(["msg" => 'Deze combinatie van Request en Method is niet toegelaten']);
+    exit;
+}
+
 //GET btwcodes: alle btwcodes geven
 if ( $method == "GET" AND $request_part == "btwcodes" )
 {
@@ -32,6 +49,7 @@ if ( $method == "GET" AND $request_part == "btwcodes" )
     $data = $container->getDBManager()->GetData( $sql, 'assoc');
 
     print json_encode( [ "msg" => "OK", "data" => $data ] ) ;
+    exit;
 }
 
 //GET btwcode: één btwcode geven
@@ -40,20 +58,24 @@ if ( $method == "GET" AND $request_part == "btwcode" )
     $sql = "select * from eu_btw_codes where eub_id=$id";
     $data = $container->getDBManager()->GetData( $sql, 'assoc');
 
-    print json_encode( [ "msg" => "OK", "data" => $data ] ) ;
+    print json_encode(["msg" => "OK", "data" => $data]);
+    exit;
 }
 
 //POST btwcodes: een btwcode toevoegen
 if ( $method == "POST" AND $request_part == "btwcodes" )
 {
-    $code = $_POST["code"];
-    $land = $_POST["land"];
-    $sql = "INSERT INTO eu_btw_codes SET eub_land='$land', eub_code='$code'";
+    //$code = $_POST["code"];
+    //$land = $_POST["land"];
+    $contents = json_decode( file_get_contents("php://input") );
+    $newCode = $contents->code;
+    $newLand = $contents->land;
+    $sql = "INSERT INTO eu_btw_codes SET eub_land='$newLand', eub_code='$newCode'";
     $data = $container->getDBManager()->ExecuteSQL( $sql );
 
     http_response_code(201);
-    print json_encode( [ "msg" =>"BTW code $code - $land aangemaakt", "id" => $container->getDBManager()->GetData( "SELECT MAX(eub_id) FROM eu_btw_codes", 'assoc' )[0]['MAX(eub_id)'] ] ) ;
-    //eub_id nog toevoegen in json_encode
+    print json_encode( [ "msg" =>"BTW code $newCode - $newLand aangemaakt", "id" => $container->getDBManager()->GetData( "SELECT MAX(eub_id) FROM eu_btw_codes", 'assoc' )[0]['MAX(eub_id)'] ] ) ;
+    exit;
 }
 
 //PUT btwcode: een btwcode updaten
@@ -67,6 +89,7 @@ if ( $method == "PUT" AND $request_part == "btwcode" )
     $data = $container->getDBManager()->ExecuteSQL( $sql );
 
     print json_encode( [ "msg" =>"OK", "info" =>"BTW code $newCode - $newLand gewijzigd" ] ) ;
+    exit;
 }
 
 //DELETE btwcode: een btwcode verwijderen
@@ -76,13 +99,5 @@ if ( $method == "DELETE" AND $request_part == "btwcode" )
     $data = $container->getDBManager()->ExecuteSQL( $sql );
 
     print json_encode( [ "msg" => "OK", "info" => "BTW code $id verwijderd" ] ) ;
+    exit;
 }
-
-//errors
-if ( $method == "GET" AND $request_part != "btwcodes" AND $request_part != "btwcode" )
-{
-    print json_encode( [ "msg" => "Deze combinatie van Resource en Method is niet toegelaten" ] ) ;
-}
-
-?>
-
