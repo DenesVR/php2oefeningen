@@ -40,16 +40,6 @@ if ( $method == "GET" AND $request_part != "btwcodes" AND $request_part != "btwc
     exit;
 }
 
-if (!is_numeric($id) && $request_part == "btwcode") {
-    print json_encode(["msg" => 'Het opgegeven ID is ongeldig']);
-    exit;
-}
-
-if ($id && $request_part == "btwcodes") {
-    print json_encode(["msg" => 'Deze combinatie van Request en Method is niet toegelaten']);
-    exit;
-}
-
 //GET btwcodes: alle btwcodes geven
 if ( $method == "GET" AND $request_part == "btwcodes" )
 {
@@ -63,11 +53,17 @@ if ( $method == "GET" AND $request_part == "btwcodes" )
 //GET btwcode: één btwcode geven
 if ( $method == "GET" AND $request_part == "btwcode" )
 {
+    if(is_numeric($id)) {
     $sql = "select * from eu_btw_codes where eub_id=$id";
     $data = $container->getDBManager()->GetData( $sql, 'assoc');
 
-    print json_encode(["msg" => "OK", "data" => $data]);
-    exit;
+
+        print json_encode(["msg" => "OK", "data" => $data]);
+        exit;
+    } else {
+        print json_encode(["msg" => "NOT"]);
+        exit;
+    }
 }
 
 //POST btwcodes: een btwcode toevoegen
@@ -107,5 +103,10 @@ if ( $method == "DELETE" AND $request_part == "btwcode" )
     $data = $container->getDBManager()->ExecuteSQL( $sql );
 
     print json_encode( [ "msg" => "OK", "info" => "BTW code $id verwijderd" ] ) ;
+    exit;
+}
+
+if ($id && $request_part == "btwcodes") {
+    print json_encode(["msg" => 'Deze combinatie van Request en Method is niet toegelaten']);
     exit;
 }
